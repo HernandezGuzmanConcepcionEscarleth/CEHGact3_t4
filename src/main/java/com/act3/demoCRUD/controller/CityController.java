@@ -1,8 +1,8 @@
+
 package com.act3.demoCRUD.controller;
 
 import com.act3.demoCRUD.model.City;
 import com.act3.demoCRUD.repository.CityRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class CityController {
 
-    @Autowired
-    private CityRepository repo;
+    private final CityRepository repo;
+
+    // Constructor para recibir el repositorio
+    public CityController(CityRepository repo) {
+        this.repo = repo;
+    }
 
     // LISTAR
     @GetMapping("/")
