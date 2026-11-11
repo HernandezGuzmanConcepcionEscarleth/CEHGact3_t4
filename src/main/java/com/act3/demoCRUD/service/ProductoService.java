@@ -52,4 +52,13 @@ public class ProductoService {
     public Categoria guardarCategoria(Categoria c) {
         return categoriaRepo.save(c);
     }
+
+    public Categoria guardarCategoria1(Categoria id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'guardarCategoria'");
+    }
+    // Busca una categoria por su id
+public Categoria buscarCategoria(Long id) {
+    return categoriaRepo.findById(id).orElseThrow();
+}
 }

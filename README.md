@@ -94,3 +94,45 @@ Permite realizar las operaciones CRUD de los productos.
 
 - Consultar productos: http://localhost:8085/productos
 - Registrar producto: http://localhost:8085/productos/nuevo
+
+
+## Pruebas en Postman
+
+Se realizaron pruebas utilizando Postman para comprobar el funcionamiento de las peticiones HTTP del proyecto.
+
+### 1. Método GET - Consultar productos
+
+Se utiliza el método GET para obtener la lista de productos registrados en la base de datos.
+
+**URL:**
+
+http://localhost:8085/productos
+
+**Resultado:**
+
+Se muestra la lista de productos registrados.
+
+![GET productos](img/GET.jpeg)
+
+### 2. Método POST - Registrar producto
+
+Se utiliza el método POST para guardar un producto nuevo en la base de datos.
+
+**URL:**
+
+http://localhost:8085/productos/guardar
+
+
+**Resultado:**
+
+El producto se guarda correctamente y se redirige a la lista de productos.
+
+![POST productos](img/POST.jpeg)
+
+
+## Enlaces del proyecto
+
+- **Aplicación en el VPS:** http://179.197.82.130:8085
+- **Lista de productos:** http://179.197.82.130:8085/productos
+- **Formulario de productos:** http://179.197.82.130:8085/productos/nuevo
+- **Categorías:** http://179.197.82.130:8085/categorias

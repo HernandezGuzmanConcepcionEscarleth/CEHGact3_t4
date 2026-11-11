@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import com.act3.demoCRUD.model.Categoria;
 import com.act3.demoCRUD.model.Producto;
 import com.act3.demoCRUD.service.ProductoService;
 
@@ -40,13 +41,28 @@ public class ProductoController {
 
     // create y update (paso 2): recibe el formulario y lo guarda
     // despues redirige a la lista para ver el cambio
-    @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Producto producto) {
-        service.guardar(producto);
-        return "redirect:/productos";
+    
+// Guarda el producto con una categoria que ya existe
+@PostMapping("/guardar")
+public String guardar(@ModelAttribute Producto producto) {
+
+    // Busca la categoria seleccionada en la base de datos
+    if (producto.getCategoria() != null &&
+        producto.getCategoria().getId() != null) {
+
+        Categoria categoria = service.guardarCategoria(
+            producto.getCategoria().getId()
+        );
+
+        producto.setCategoria(categoria);
     }
 
-    // update (paso 1): abre el formulario con los datos del producto
+    service.guardar(producto);
+    return "redirect:/productos";
+}
+
+
+    // update (paso 1): abre el formulario con los datoscd /root/CEHGact3_t4 && find src/main/java src/main/resources/templates -type f del producto
     // @pathvariable toma el id que viene en la url
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, Model model) {
