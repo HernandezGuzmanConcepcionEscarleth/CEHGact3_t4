@@ -41,28 +41,28 @@ public class ProductoController {
 
     // create y update (paso 2): recibe el formulario y lo guarda
     // despues redirige a la lista para ver el cambio
-    
-// Guarda el producto con una categoria que ya existe
-@PostMapping("/guardar")
-public String guardar(@ModelAttribute Producto producto) {
+    @PostMapping("/guardar")
+    public String guardar(@ModelAttribute Producto producto) {
 
-    // Busca la categoria seleccionada en la base de datos
-    if (producto.getCategoria() != null &&
-        producto.getCategoria().getId() != null) {
+        // busca la categoria seleccionada en la base de datos
+        if (producto.getCategoria() != null &&
+            producto.getCategoria().getId() != null) {
 
-        Categoria categoria = service.guardarCategoria(
-            producto.getCategoria().getId()
-        );
+            Categoria categoria = service.buscarCategoria(
+                producto.getCategoria().getId()
+            );
+            producto.setCategoria(categoria);
 
-        producto.setCategoria(categoria);
+        } else {
+            // si no eligio categoria, evita guardar un objeto vacio
+            producto.setCategoria(null);
+        }
+
+        service.guardar(producto);
+        return "redirect:/productos";
     }
 
-    service.guardar(producto);
-    return "redirect:/productos";
-}
-
-
-    // update (paso 1): abre el formulario con los datoscd /root/CEHGact3_t4 && find src/main/java src/main/resources/templates -type f del producto
+    // update (paso 1): abre el formulario con los datos del producto
     // @pathvariable toma el id que viene en la url
     @GetMapping("/editar/{id}")
     public String editar(@PathVariable Long id, Model model) {

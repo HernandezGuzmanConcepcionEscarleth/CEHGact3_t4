@@ -53,12 +53,8 @@ public class ProductoService {
         return categoriaRepo.save(c);
     }
 
-    public Categoria guardarCategoria1(Categoria id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'guardarCategoria'");
+    // busca una categoria por su id (la usa el controller al guardar un producto)
+    public Categoria buscarCategoria(Long id) {
+        return categoriaRepo.findById(id).orElse(null);
     }
-    // Busca una categoria por su id
-public Categoria buscarCategoria(Long id) {
-    return categoriaRepo.findById(id).orElseThrow();
-}
 }
