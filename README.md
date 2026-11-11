@@ -1,4 +1,4 @@
-# 3. Act3. CRUD en Spring Boot y Relaciones (sin frontend separado)
+# 3. Act_3. CRUD en Spring Boot y Relaciones (sin frontend separado)
 
 ## CRUD de Productos y Categorías
 
